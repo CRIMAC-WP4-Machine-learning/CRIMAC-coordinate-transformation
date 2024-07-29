@@ -5,6 +5,14 @@ To go from BCS to SCS, apply functions sequentially.
 
 import numpy as np
 
+def transformSplitApertureToXYZ(range,theta,phi):
+    # theta and phi in radians
+    x = range*np.sin(theta)
+    y = range*np.sin(phi)
+
+    z = np.sqrt(range**2-x**2-y**2)
+    return [x,y,z]
+
 def transformBCStoTCS(posXYZ_BCS,anglePhiThetaPsi):
     # section 5.3.2, i.e. no stabilization is assumed.
     # No offsets between BCS and TCS
